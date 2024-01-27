@@ -50,6 +50,7 @@ The construction of the Deep Neural Network model involved extracting the latent
 
 ## Results
 The performance of the movie prediction models was rigorously evaluated using RMSE (Root Mean Square Error) as the benchmark metric, comparing true ratings against predicted ratings. The following is a summary of the results:
+
 <img src=streamlit_app/images/rmse_scores.png width="500">
 
 ## Usage
