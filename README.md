@@ -12,7 +12,7 @@ Download the above dataset and place it in the folder named dataset.
 
 Three datasets are used in this project: ratings.csv, movies.csv and tags.csv. 
 
-![Streamlit App](streamlit_app/images/data_and_features.png)
+<img src=streamlit_app/images/data_and_features.png width="500">
 
 
 ## Algorithms
@@ -33,22 +33,24 @@ Utilize cosine similarity to measure the similarity between user and movie embed
 Recommend movies with the highest cosine similarity scores, aligning with user preferences.
 
 #### Model architecture
-![Streamlit App](streamlit_app/images/NLP_based_method.png)
+<img src="streamlit_app/images/NLP_based_method.png" width="500">
 
 ### User-Based Collaborative Filtering:
 
 #### Matrix Factorization
 Matrix factorization stands out as a widely used technique for collaborative filtering. The fundamental concept involves breaking down the user-item matrix into two matrices with lower ranks: one depicting user preferences and the other reflecting movie characteristics. The reconstruction of the original user-item matrix is accomplished by computing the dot product of these two matrices.
-![Streamlit App](streamlit_app/images/matrix_fact_img.png)
+
+<img src=streamlit_app/images/matrix_fact_img.png width="500">
 
 #### Deep learning Based
 The construction of the Deep Neural Network model involved extracting the latent features of users and movies using Embedding layers. 
-![Streamlit App](streamlit_app/images/dl_img.png)
+
+<img src=streamlit_app/images/dl_img.png) width="500">
 
 
 ## Results
 The performance of the movie prediction models was rigorously evaluated using RMSE (Root Mean Square Error) as the benchmark metric, comparing true ratings against predicted ratings. The following is a summary of the results:
-![Streamlit App](streamlit_app/images/rmse_scores.png)
+<img src=streamlit_app/images/rmse_scores.png width="500">
 
 ## Usage
 On the terminal run the below command to launch streamlit:
