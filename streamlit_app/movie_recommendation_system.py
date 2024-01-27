@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import os
 
 if 'user_id' not in st.session_state:
     st.session_state.user_id = None
@@ -64,19 +65,19 @@ def app_content():
     with tab2:
         st.markdown("""Three datasets are used in this project: ratings.csv, movies.csv and tags.csv. 
                     The features of each dataset are described below:""")
-        st.image(".\\images\\data_and_features.png")
+        st.image(os.path.join("streamlit_app","images","data_and_features.png"))
         st.markdown("""The tags.csv file was used only to develop a content-based NLP recommendation system. 
                     The ratings.csv and movies.csv files were used to develop all other recommendation systems.""")
 
     with tab3:
         st.markdown("#### Distributions for Movies:")
-        st.image(".\\images\\movie_release.png")
-        st.image(".\\images\\movie_genres.png")
+        st.image(os.path.join("streamlit_app","images","movie_release.png"))
+        st.image(os.path.join("streamlit_app","images","movie_genres.png"))
         st.markdown("#### Distributions for Movie Ratings:")
-        st.image(".\\images\\average_rating.png")
-        st.image(".\\images\\movie_rating_rel.png")
-        st.image(".\\images\\movie_rating_genre.png")
-        st.image(".\\images\\most_rated_movies.png")
+        st.image(os.path.join("streamlit_app","images","average_rating.png"))
+        st.image(os.path.join("streamlit_app","images","movie_rating_rel.png"))
+        st.image(os.path.join("streamlit_app","images","movie_rating_genre.png"))
+        st.image(os.path.join("streamlit_app","images","most_rated_movies.png"))
 
     with tab4:
         tab_a1, tab_a2, tab_a3 = st.tabs(["Collaborative Filtering",
@@ -107,7 +108,7 @@ def app_content():
                 st.markdown("""The user-item matrix features rows corresponding to users and columns corresponding to movies. 
                             The matrix entries denote the ratings provided by users for the respective movies. 
                             Typically, this matrix is sparse, given that each user tends to rate only a small portion of the available movies.""")
-                st.image(".\\images\\matrix_fact_img.png")
+                st.image(os.path.join("streamlit_app","images","matrix_fact_img.png"))
                 st.markdown("""The goal of matrix factorization is to decompose the user-item matrix R into two lower-rank matrices, P and Q, with their product closely approximating R. 
                             Matrix P signifies user’s preferences, while matrix Q signifies items' characteristics. 
                             Each row in matrix P is a vector representing a user's preferences, and each row in matrix Q is a vector representing an item's characteristics. 
@@ -120,7 +121,7 @@ def app_content():
                 st.markdown("---")
                 st.markdown("#### Top 10 Recommendations (for User ID = " +
                             str(user_id)+") are:  ")
-                colab_matrix_fact = pd.read_csv(".\\colab_matrix_fact.csv")
+                colab_matrix_fact = pd.read_csv(os.path.join("streamlit_app","colab_matrix_fact.csv"))
                 colab_matrix_fact = colab_matrix_fact[colab_matrix_fact['users'] == user_id]
                 recommendations = {}
                 top_10 = []
@@ -146,7 +147,7 @@ def app_content():
                 st.markdown("""The construction of the Deep Neural Network model involved extracting the latent features of users and movies using Embedding layers. 
                             Subsequently, Dense layers with dropout mechanisms were stacked, followed by the addition of a final Dense layer comprising 9 neurons (representing each rating from 1 to 5) and incorporating a Softmax activation function. 
                             For the optimization algorithm, it was decided to use SGD and Sparse Categorical Cross Entropy for the loss function.""")
-                st.image(".\\images\\dl_img.png")
+                st.image(os.path.join("streamlit_app","images","dl_img.png"))
                 st.markdown("""The workflow involves users inputting their ID, extracting unseen movies, and utilizing a DNN model that takes user and movie IDs to predict ratings. 
                          The model's predictions are normalized and used to identify movies likely to interest the user, without converting ratings back to the original scale. 
                          The DNN model is thus a valuable tool for predicting user preferences for unseen movies.""")
@@ -154,7 +155,7 @@ def app_content():
                 if user_id >= 1 and user_id <= 10:
                     st.markdown("#### Top 10 Recommendations (for User ID = " +
                                 str(user_id)+") are:  ")
-                    colab_dl = pd.read_csv(".\\colab_dl.csv")
+                    colab_dl = pd.read_csv(os.path.join("streamlit_app","colab_dl.csv"))
                     colab_dl = colab_dl[colab_dl['user_id'] == user_id]
                     recommendations = {}
                     top_10 = []
@@ -198,12 +199,12 @@ def app_content():
                         Recommend movies with the highest cosine similarity scores, aligning with user preferences.
                         
                         """)
-            st.image(".\\images\\NLP_based_method.png")
+            st.image(os.path.join("streamlit_app", "images", "NLP_based_method.png"))
             st.markdown("---")
             if user_id >= 1 and user_id <= 100:
                 st.markdown("#### Top 10 Recommendations (for User ID = " +
                             str(user_id)+") are:  ")
-                content_nlp = pd.read_csv(".\\content_nlp.csv")
+                content_nlp = pd.read_csv(os.path.join("streamlit_app","content_nlp.csv"))
                 content_nlp = content_nlp[content_nlp['user_id'] == user_id]
                 recommendations = {}
                 top_10 = []
@@ -244,7 +245,7 @@ def app_content():
             if user_id >= 1 and user_id <= 10:
                 st.markdown("#### Top 10 Recommendations (for User ID = " +
                             str(user_id)+") are:  ")
-                hybrid = pd.read_csv(".\\hybrid.csv")
+                hybrid = pd.read_csv(os.path.join("streamlit_app","hybrid.csv"))
                 hybrid = hybrid[hybrid['user_id'] == user_id]
                 recommendations = {}
                 top_10 = []
@@ -271,7 +272,7 @@ def app_content():
                         ### Collaborative Filtering:
                         The performance of the movie prediction models was rigorously evaluated using RMSE (Root Mean Square Error) as the benchmark metric, comparing true ratings against predicted ratings. The following is a summary of the results:
                         """)
-            st.image(".\\images\\rmse_scores.png")
+            st.image(os.path.join("streamlit_app","images","rmse_scores.png"))
 
             st.markdown("""
                         #### Comparative Analysis:
