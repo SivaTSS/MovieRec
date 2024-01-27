@@ -45,7 +45,7 @@ Matrix factorization stands out as a widely used technique for collaborative fil
 #### Deep learning Based
 The construction of the Deep Neural Network model involved extracting the latent features of users and movies using Embedding layers. 
 
-<img src=streamlit_app/images/dl_img.png) width="500">
+<img src=streamlit_app/images/dl_img.png width="500">
 
 
 ## Results
