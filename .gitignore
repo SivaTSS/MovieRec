@@ -1,5 +1,7 @@
 other
-models
-dataset
+models/*
+dataset/*
+!models/.gitkeep
+!dataset/.gitkeep
 .pyc
 .ipynb_checkpoints
